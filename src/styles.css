@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@600;700&family=Public+Sans:wght@800;900&family=IBM+Plex+Sans+Arabic:wght@600;700&display=swap');
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-orange: var(--orange);
+  --color-orange-foreground: var(--orange-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+
+  
+
+  --font-sans: "Public Sans", sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", sans-serif;
+  
+  --font-weight-heading: 900;
+
+  --shadow-glow: 0 0 40px -8px var(--orange);
+  --shadow-card: 0 4px 24px -8px oklch(0.1 0.05 250 / 0.15);
+  --shadow-elevated: 0 20px 60px -20px oklch(0.1 0.05 250 / 0.3);
+
+  --gradient-hero: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  --gradient-orange: linear-gradient(135deg, oklch(0.72 0.2 45) 0%, var(--orange) 100%);
+  --gradient-fade: linear-gradient(to bottom, transparent 0%, var(--navy-deep) 100%);
+
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --navy-deep: oklch(0.18 0.05 255);   /* #0B192C */
+  --navy: oklch(0.25 0.06 255);
+  --navy-foreground: oklch(0.98 0.005 250);
+  --orange: oklch(0.7 0.2 42);          /* #FF6B00 */
+  --orange-foreground: oklch(1 0 0);
+
+  /* Light theme */
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.18 0.05 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.05 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.05 255);
+  --primary: oklch(0.18 0.05 255);
+  --primary-foreground: oklch(0.98 0.005 250);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.18 0.05 255);
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.5 0.02 255);
+  --accent: oklch(0.7 0.2 42);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.65 0.18 145);
+  --success-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.01 250);
+  --input: oklch(0.94 0.01 250);
+  --ring: oklch(0.7 0.2 42);
+}
+
+.dark {
+  --background: oklch(0.15 0.04 255);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.22 0.05 255);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.22 0.05 255);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: oklch(0.7 0.2 42);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.28 0.05 255);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.28 0.05 255);
+  --muted-foreground: oklch(0.7 0.02 250);
+  --accent: oklch(0.7 0.2 42);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.65 0.18 145);
+  --success-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.7 0.2 42);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    font-family: var(--font-sans); /* الخط الافتراضي (English/General) */
+  }
+[dir="rtl"] body {
+    font-family: var(--font-arabic); /* يطبق غير كي تكون الصفحة بالعربية */
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+  .bg-gradient-orange {
+    background: var(--gradient-orange);
+  }
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  [dir="rtl"] .marquee {
+    animation: marquee-rtl 30s linear infinite;
+  }
+
+  @keyframes marquee-rtl {
+    from { transform: translateX(0); }
+    to { transform: translateX(50%); }
+  }
+}
